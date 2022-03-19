@@ -4,6 +4,7 @@ import shutil
 import subprocess
 import sys
 
+sys.path.insert(0, '/content/caffe/python')
 from caffe.proto import caffe_pb2
 from google.protobuf import text_format
 
