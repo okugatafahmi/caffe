@@ -263,11 +263,11 @@ void caffe_rng_uniform(const int n, Dtype a, Dtype b, Dtype* r) {
 }
 
 template
-void caffe_rng_uniform<float>(const int n, float a, float b,
+void caffe_rng_uniform<float>(const int n, const float a, const float b,
                               float* r);
 
 template
-void caffe_rng_uniform<double>(const int n, double a, double b,
+void caffe_rng_uniform<double>(const int n, const double a, const double b,
                                double* r);
 
 template <typename Dtype>
