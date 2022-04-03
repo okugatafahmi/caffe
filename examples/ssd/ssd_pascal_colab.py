@@ -238,13 +238,13 @@ job_name = "SSD_{}".format(resize)
 model_name = "VGG_vehicle_type_{}".format(job_name)
 
 # Directory which stores the model .prototxt file.
-save_dir = "/objec_detection/ssd/models/vehicle_type/{}".format(job_name)
+save_dir = "/object_detection/ssd/models/vehicle_type/{}".format(job_name)
 # Directory which stores the snapshot of models.
-snapshot_dir = "/objec_detection/ssd/models/vehicle_type/{}".format(job_name)
+snapshot_dir = "/object_detection/ssd/models/vehicle_type/{}".format(job_name)
 # Directory which stores the job script and log file.
-job_dir = "/objec_detection/ssd/jobs/vehicle_type/{}".format(job_name)
+job_dir = "/object_detection/ssd/jobs/vehicle_type/{}".format(job_name)
 # Directory which stores the detection results.
-output_result_dir = "/objec_detection/ssd/detection_results/{}".format(job_name)
+output_result_dir = "/object_detection/ssd/detection_results/{}".format(job_name)
 
 # model definition files.
 train_net_file = "{}/train.prototxt".format(save_dir)
@@ -330,12 +330,12 @@ clip = False
 
 # Solver parameters.
 # Defining which GPUs to use.
-gpus = "0,1,2,3"
+gpus = "0"
 gpulist = gpus.split(",")
 num_gpus = len(gpulist)
 
 # Divide the mini-batch to different GPUs.
-batch_size = 32
+batch_size = 16
 accum_batch_size = 32
 iter_size = accum_batch_size / batch_size
 solver_mode = P.Solver.CPU
@@ -357,7 +357,7 @@ elif normalization_mode == P.Loss.FULL:
   base_lr *= 2000.
 
 # Evaluate on whole test set.
-num_test_image = 4952
+num_test_image = 49
 test_batch_size = 8
 # Ideally test_batch_size should be divisible by num_test_image,
 # otherwise mAP will be slightly off the true value.
