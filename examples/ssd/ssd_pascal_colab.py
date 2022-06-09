@@ -264,7 +264,7 @@ pretrain_model = "models/VGGNet/VGG_ILSVRC_16_layers_fc_reduced.caffemodel"
 label_map_file = "data/vehicle_type/labelmap_vehicle_type.prototxt"
 
 # MultiBoxLoss parameters.
-num_classes = 13
+num_classes = 14
 share_location = True
 background_label_id=0
 train_on_diff_gt = True

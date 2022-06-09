@@ -275,7 +275,7 @@ pretrain_model = "{}_iter_{}.caffemodel".format(snapshot_prefix, max_iter)
 label_map_file = "data/vehicle_type/labelmap_vehicle_type.prototxt"
 
 # MultiBoxLoss parameters.
-num_classes = 13
+num_classes = 14
 share_location = True
 background_label_id=0
 train_on_diff_gt = True
