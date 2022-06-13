@@ -151,6 +151,7 @@ det_out_param = {
     'code_type': code_type,
     'visualize': True,
     'visualize_threshold': visualize_threshold,
+    'save_file': '/object_detection/sample/ssd_mpv_0015.mp4',
     }
 
 # The job name should be same as the name used in examples/ssd/ssd_pascal.py.
