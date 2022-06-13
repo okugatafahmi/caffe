@@ -6,10 +6,26 @@ import shutil
 import stat
 import subprocess
 import sys
+import argparse
 
 sys.path.insert(0, '/content/caffe/python')
 import caffe
 from caffe.model_libs import *
+
+def get_parser():
+  parser = argparse.ArgumentParser(description="Detectron2 demo for builtin configs")
+  parser.add_argument("--video-input", help="Path to video file.")
+  parser.add_argument(
+      "--output",
+      help="A file or directory to save output visualizations.",
+  )
+  parser.add_argument(
+      "--confidence-threshold",
+      type=float,
+      default=0.5,
+      help="Minimum score for instance predictions to be shown",
+  )
+  return parser
 
 # Add extra layers on top of a "base" network (e.g. VGGNet or Inception).
 def AddExtraLayers(net, use_batchnorm=True, lr_mult=1):
@@ -65,6 +81,10 @@ def AddExtraLayers(net, use_batchnorm=True, lr_mult=1):
 
     return net
 
+args = get_parser().parse_args()
+if not args.video_input or not args.output:
+  print('There is no value for args of video_input or output')
+  sys.exit()
 
 ### Modify the following parameters accordingly ###
 # The directory which contains the caffe code.
@@ -74,7 +94,7 @@ caffe_root = os.getcwd()
 # Set true if you want to start training right after generating all files.
 run_soon = True
 # The video file path
-video_file = "/object_detection/sample/mpv_0015.mp4"
+video_file = args.video_input
 
 # The parameters for the video demo
 
@@ -147,11 +167,11 @@ det_out_param = {
             'label_map_file': label_map_file,
             },
     'keep_top_k': 200,
-    'confidence_threshold': 0.01,
+    'confidence_threshold': args.confidence_threshold,
     'code_type': code_type,
     'visualize': True,
     'visualize_threshold': visualize_threshold,
-    'save_file': '/object_detection/sample/ssd_mpv_0015.mp4',
+    'save_file': args.output,
     }
 
 # The job name should be same as the name used in examples/ssd/ssd_pascal.py.
