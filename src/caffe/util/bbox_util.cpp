@@ -2223,8 +2223,10 @@ void VisualizeBBox(const vector<cv::Mat>& images, const Blob<Dtype>* detections,
         cap_out = outputVideo;
       }
       cap_out.write(image);
+    } else {
+      // Show the image only when not save to file
+      cv::imshow("detections", image);
     }
-    cv::imshow("detections", image);
     if (cv::waitKey(1) == 27) {
       raise(SIGINT);
     }
