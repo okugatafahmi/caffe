@@ -111,8 +111,8 @@ lr_mult = 1.
 # Stores LabelMapItem.
 label_map_file = "data/vehicle_type/labelmap_vehicle_type.prototxt"
 # The resized image size
-resize_width = 416 #300
-resize_height = 416 #300
+resize_width = 512 #300
+resize_height = 512 #300
 
 # Parameters needed for test.
 # Set the number of test iterations to the maximum integer number.
@@ -126,8 +126,8 @@ test_batch_size = 1
 # Only display high quality detections whose scores are higher than a threshold.
 visualize_threshold = 0.3
 # Size of video image. TODO
-video_width = 416
-video_height = 416
+video_width = 512
+video_height = 512
 # Scale the image size for display.
 scale = 1.0
 
@@ -180,11 +180,11 @@ job_name = "SSD_{}".format(resize)
 model_name = "VGG_vehicle_type_{}".format(job_name)
 
 # Directory which stores the model .prototxt file.
-save_dir = "/object_detection/ssd/models/vehicle_type/{}_video".format(job_name)
+save_dir = "/object_detection/ssd/models/{}_video".format(job_name)
 # Directory which stores the snapshot of trained models.
-snapshot_dir = "/object_detection/ssd/models/vehicle_type/{}".format(job_name)
+snapshot_dir = "/object_detection/ssd/models/{}".format(job_name)
 # Directory which stores the job script and log file.
-job_dir = "/object_detection/ssd/jobs/vehicle_type/{}_video".format(job_name)
+job_dir = "/object_detection/ssd/jobs/{}_video".format(job_name)
 
 # model definition files.
 test_net_file = "{}/test.prototxt".format(save_dir)
@@ -211,7 +211,7 @@ pretrain_model = "{}_iter_{}.caffemodel".format(snapshot_prefix, max_iter)
 
 # parameters for generating priors.
 # minimum dimension of input image
-min_dim = 416 #300
+min_dim = 512 #300
 # conv4_3 ==> 38 x 38
 # fc7 ==> 19 x 19
 # conv6_2 ==> 10 x 10

@@ -82,8 +82,8 @@ train_data = "examples/vehicle_type/vehicle_type_train_lmdb"
 # The database file for testing data. Created by data/VOC0712/create_data.sh
 test_data = "examples/vehicle_type/vehicle_type_test_lmdb"
 # Specify the batch sampler.
-resize_width = 416 #300
-resize_height = 416 #300
+resize_width = 512 #300
+resize_height = 512 #300
 resize = "{}x{}".format(resize_width, resize_height)
 batch_sampler = [
         {
@@ -236,11 +236,11 @@ job_name = "SSD_{}".format(resize)
 model_name = "VGG_vehicle_type_{}".format(job_name)
 
 # Directory which stores the model .prototxt file.
-save_dir = "/object_detection/ssd/models/vehicle_type/{}_score".format(job_name)
+save_dir = "/object_detection/ssd/models/{}_score".format(job_name)
 # Directory which stores the snapshot of trained models.
-snapshot_dir = "/object_detection/ssd/models/vehicle_type/{}".format(job_name)
+snapshot_dir = "/object_detection/ssd/models/{}".format(job_name)
 # Directory which stores the job script and log file.
-job_dir = "/object_detection/ssd/jobs/vehicle_type/{}_score".format(job_name)
+job_dir = "/object_detection/ssd/jobs/{}_score".format(job_name)
 # Directory which stores the detection results.
 output_result_dir = "/object_detection/ssd/detection_results/{}_score".format(os.environ['HOME'], job_name)
 
@@ -369,8 +369,8 @@ elif normalization_mode == P.Loss.FULL:
 
 # Evaluate on whole test set.
 # TODO
-num_test_image = 8
-test_batch_size = 8
+num_test_image = 58
+test_batch_size = 2
 # Ideally test_batch_size should be divisible by num_test_image,
 # otherwise mAP will be slightly off the true value.
 test_iter = int(math.ceil(float(num_test_image) / test_batch_size))
