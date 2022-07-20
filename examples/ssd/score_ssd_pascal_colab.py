@@ -242,7 +242,7 @@ snapshot_dir = "/object_detection/ssd/models/{}".format(job_name)
 # Directory which stores the job script and log file.
 job_dir = "/object_detection/ssd/jobs/{}_score".format(job_name)
 # Directory which stores the detection results.
-output_result_dir = "/object_detection/ssd/detection_results/{}_score".format(os.environ['HOME'], job_name)
+output_result_dir = "/object_detection/ssd/detection_results/{}_score".format(job_name)
 
 # model definition files.
 train_net_file = "{}/train.prototxt".format(save_dir)
@@ -308,7 +308,7 @@ loss_param = {
 
 # parameters for generating priors.
 # minimum dimension of input image
-min_dim = 300
+min_dim = 512
 # conv4_3 ==> 38 x 38
 # fc7 ==> 19 x 19
 # conv6_2 ==> 10 x 10
@@ -369,8 +369,8 @@ elif normalization_mode == P.Loss.FULL:
 
 # Evaluate on whole test set.
 # TODO
-num_test_image = 58
-test_batch_size = 2
+num_test_image = 59
+test_batch_size = 1
 # Ideally test_batch_size should be divisible by num_test_image,
 # otherwise mAP will be slightly off the true value.
 test_iter = int(math.ceil(float(num_test_image) / test_batch_size))
