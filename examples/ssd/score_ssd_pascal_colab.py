@@ -369,8 +369,8 @@ elif normalization_mode == P.Loss.FULL:
 
 # Evaluate on whole test set.
 # TODO
-num_test_image = 59
-test_batch_size = 1
+num_test_image = 156
+test_batch_size = 4
 # Ideally test_batch_size should be divisible by num_test_image,
 # otherwise mAP will be slightly off the true value.
 test_iter = int(math.ceil(float(num_test_image) / test_batch_size))
